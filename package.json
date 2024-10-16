@@ -1,7 +1,6 @@
 {
-  "name": "bpcli",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@jspereiramoura/bpcli",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "build": "rimraf ./dist && tsc",
@@ -10,13 +9,20 @@
     "prepare": "husky"
   },
   "bin": {
-    "bpcli": "./dist/index.js"
+    "bpcli": "dist/index.js"
   },
   "lint-staged": {
     "src/**/*.ts": [
       "eslint --fix",
       "pnpm run prettier:ts"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jspereiramoura/bpcli.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
