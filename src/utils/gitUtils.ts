@@ -1,5 +1,21 @@
-export class GitUtilsImpl implements GitUtils {
-  cloneRepository(): Promise<void> {
-    throw new Error("Method not implemented.");
+import simpleGit from "simple-git";
+
+export class GitUtilsImpl {
+  static cloneRepository({
+    path,
+    template
+  }: {
+    path: string;
+    template: TemplateProps;
+  }) {
+    simpleGit()
+      .clone(template.url, path, ["-b", template.branch], err => {
+        return err
+          ? console.error("Clone error")
+          : console.log("Successful clone");
+      })
+      .then(() => {
+        simpleGit(path).branch(["-m", "main"]);
+      });
   }
 }
